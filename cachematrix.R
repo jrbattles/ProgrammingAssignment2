@@ -28,6 +28,16 @@ list(set=set, get=get, setinverse=setinverse, getintervse=getinverse)
 # computation. If not, it computes the inverse, sets the value in the cache via
 # setinverse function.
 
+# This function assumes that the matrix can always be inverted.
+
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    myinv <- x$getinverse()
+    if(!is.null(myinv)) {
+        message("Pulling data from cache...")
+        return(myinv)
+    }    
+    mydata <- x$get()
+    myinv <- solve(mydata)
+    x$setinverse(myinv)
+    myinv
 }
