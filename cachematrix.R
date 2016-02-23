@@ -41,3 +41,21 @@ cacheSolve <- function(x, ...) {
     x$setinverse(myinv)
     myinv
 }
+
+## > source("cachematrix.R")
+## > z = rbind(c(4, 7), c(2, 6))
+## > m = makeCacheMatrix(z)
+## > m$get()
+## [,1] [,2]
+## [1,]    4    7
+## [2,]    2    6
+## > cacheSolve(m)
+## [,1] [,2]
+## [1,]  0.6 -0.7
+## [2,] -0.2  0.4
+## > cacheSolve(m)
+## Pulling from cached data. Yowsa!!!
+##     [,1] [,2]
+## [1,]  0.6 -0.7
+## [2,] -0.2  0.4
+## > 
